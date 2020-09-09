@@ -13,7 +13,7 @@ public class SincronizacaoReceitaApplication {
 		ApplicationContext context = SpringApplication.run(SincronizacaoReceitaApplication.class, args);
 		System.out.println("******************* INÍCIO DO PROCESSAMENTO ***************");
 		SincronizacaoReceita sincronizacaoReceita = context.getBean(SincronizacaoReceita.class);
-		sincronizacaoReceita.executarSincronizacaoReceita();
+		sincronizacaoReceita.executarSincronizacaoReceita(args[1]);
 		System.out.println("******************* FIM DO PROCESSAMENTO ***************");
 	}
 
