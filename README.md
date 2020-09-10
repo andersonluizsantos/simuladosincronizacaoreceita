@@ -2,8 +2,8 @@
 Esta projeto vai fazer a simulação do processo automático de arquivos CSV usando um serviço fake da receita federal.<br> 
 
 # 2.	Requisitos
-Dentre as funcionalidades, temos: 
-  a. Criação uma aplicação SprintBoot standalone. Que possibilita a execução por linha de comando seguindo o seguinte comando: java -jar SincronizacaoReceita <input-file><br>
+Dentre as funcionalidades, temos: <br>
+  a. Criação uma aplicação SprintBoot standalone que possibilita a execução por linha de comando seguindo o seguinte comando: java -jar SincronizacaoReceita <input-file><br>
   b. Processa um arquivo CSV de entrada com o formato abaixo.<br>
       Formato CSV:<br>
           agencia;conta;saldo;status<br>
