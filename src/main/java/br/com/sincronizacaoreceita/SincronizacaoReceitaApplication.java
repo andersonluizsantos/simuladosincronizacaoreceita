@@ -1,20 +1,38 @@
 package br.com.sincronizacaoreceita;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
 import br.com.sincronizacaoreceita.beans.SincronizacaoReceita;
+import br.com.sincronizacaoreceita.exception.CabecalhoException;
 
 @SpringBootApplication
 public class SincronizacaoReceitaApplication {
 
-	public static void main(String[] args) {
+	private static final Logger LOGGER = LoggerFactory.getLogger(SincronizacaoReceitaApplication.class);
+
+	public static void main(String[] args) throws CabecalhoException {
+
 		ApplicationContext context = SpringApplication.run(SincronizacaoReceitaApplication.class, args);
-		System.out.println("******************* INÍCIO DO PROCESSAMENTO ***************");
+		LOGGER.info("******************* INÍCIO DO PROCESSAMENTO ***************");
 		SincronizacaoReceita sincronizacaoReceita = context.getBean(SincronizacaoReceita.class);
-		sincronizacaoReceita.executarSincronizacaoReceita(args[1]);
-		System.out.println("******************* FIM DO PROCESSAMENTO ***************");
+		String nameFile = null;
+		if (args.length == 2) {
+			for (String arg : args) {
+				if (!arg.startsWith("--spring.output.ansi.enabled")) {
+					nameFile = arg;
+					break;
+				}
+			}
+			sincronizacaoReceita.executarSincronizacaoReceita(nameFile);
+			LOGGER.info("******************* FIM DO PROCESSAMENTO ***************");
+		} else {
+			LOGGER.error("Número de Angumentos Inválido para processamento do arquivo.");
+		}
+
 	}
 
 }
