@@ -20,8 +20,9 @@ public class SincronizacaoReceitaApplication {
 		LOGGER.info("******************* INÍCIO DO PROCESSAMENTO ***************");
 		SincronizacaoReceita sincronizacaoReceita = context.getBean(SincronizacaoReceita.class);
 		String nameFile = null;
-		if (args.length == 2) {
+		if (args.length <= 2) {
 			for (String arg : args) {
+				LOGGER.info("arg = " + arg);
 				if (!arg.startsWith("--spring.output.ansi.enabled")) {
 					nameFile = arg;
 					break;
